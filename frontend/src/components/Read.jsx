@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { Link } from "react-router-dom";
+const BASE_URL=process.env.BASE_URL;
 
 const Read = () => {
   const [error, seterror] = useState("")
@@ -20,7 +21,7 @@ const Read = () => {
   }
 
   const handleDelete= async (id)=>{
-    const response=await fetch(`http://localhost:5000/${id}`,{
+    const response=await fetch(`${BASE_URL}/${id}`,{
       method:"DELETE"
     });
 

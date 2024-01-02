@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+const BASE_URL=process.env.BASE_URL;
 
 const Update = () => {
   const [name, setName] = useState("");
@@ -11,7 +12,7 @@ const Update = () => {
   const {id}=useParams();
 
   const singleUser=async ()=>{
-    const response =await fetch(`http://localhost:5000/${id}`);
+    const response =await fetch(`${BASE_URL}/${id}`);
 
     const result=await response.json();
 
@@ -32,7 +33,7 @@ const Update = () => {
 
     const upuser = { name, email, age };
 
-    const response = await fetch(`http://localhost:5000/${id}`, {
+    const response = await fetch(`${BASE_URL}/${id}`, {
       method: "PATCH",
       body: JSON.stringify(upuser),
       headers: {
